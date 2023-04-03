@@ -1,6 +1,9 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
+import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.KeyHandler;
@@ -11,6 +14,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class UI {
@@ -20,6 +25,9 @@ public class UI {
     private MainStage mainStage;
     private GameLogic logic;
     private Set<KeyHandler> keyHandlers;
+    private Random random = new Random();
+
+    private List<Skeleton> skelylist;
 
 
     public UI(GameLogic logic, Set<KeyHandler> keyHandlers) {
@@ -52,6 +60,7 @@ public class UI {
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < logic.getMapWidth(); x++) {
             for (int y = 0; y < logic.getMapHeight(); y++) {
+
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
@@ -60,6 +69,18 @@ public class UI {
                 }
             }
         }
+
+
+        skelylist = logic.getMap().getSkeletons();
+
+
+        for(Skeleton skeleton: skelylist){
+            int randomX = random.nextInt(3) - 1;
+            skeleton.move(randomX, 0);
+        }
+        logic.getMap().getGuard().move(random.nextInt(3) - 1, 0);
+
+
         mainStage.setHealthLabelText(logic.getPlayerHealth());
     }
 }
