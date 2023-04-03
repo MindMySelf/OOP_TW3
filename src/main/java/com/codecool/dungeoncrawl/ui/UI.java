@@ -70,9 +70,13 @@ public class UI {
             }
         }
 
+
         skelylist = logic.getMap().getSkeletons();
+
+
         for(Skeleton skeleton: skelylist){
-            skeleton.move(random.nextInt(3) - 1, 0);
+            int randomX = random.nextInt(3) - 1;
+            skeleton.move(randomX, 0);
         }
         logic.getMap().getGuard().move(random.nextInt(3) - 1, 0);
 

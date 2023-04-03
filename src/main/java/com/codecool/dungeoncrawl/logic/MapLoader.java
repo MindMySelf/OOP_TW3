@@ -38,8 +38,9 @@ public class MapLoader {
                             break;
                         case 's':
                             cell.setType(CellType.FLOOR);
-                            map.setSkeletons(List.of(new Skeleton(cell)));
-                            break;
+                            Skeleton skeleton = new Skeleton(cell);
+                            System.out.println("New skeleton at (" + skeleton.getX() + ", " + skeleton.getY() + ")");
+                            map.setSkeletons(List.of(skeleton));
                         case '@':
                             cell.setType(CellType.FLOOR);
                             map.setPlayer(new Player(cell));

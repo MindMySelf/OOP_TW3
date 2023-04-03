@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameMap {
@@ -14,7 +15,7 @@ public class GameMap {
     private Player player;
 
     private Guard guard;
-
+    private List<Skeleton> skeletons = new ArrayList<>();
 
 
     public List<Skeleton> getSkeletons() {
@@ -22,10 +23,9 @@ public class GameMap {
     }
 
     public void setSkeletons(List<Skeleton> skeletons) {
-        this.skeletons = skeletons;
+        this.skeletons.addAll(skeletons);
     }
 
-    private List<Skeleton> skeletons;
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
