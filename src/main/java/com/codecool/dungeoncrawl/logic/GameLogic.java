@@ -1,7 +1,10 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Actor;
+import com.codecool.dungeoncrawl.data.actors.Player;
 
 public class GameLogic {
     private GameMap map;
@@ -33,4 +36,5 @@ public class GameLogic {
     public GameMap getMap() {
         return map;
     }
+
 }
