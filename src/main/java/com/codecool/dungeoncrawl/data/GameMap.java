@@ -1,6 +1,10 @@
 package com.codecool.dungeoncrawl.data;
 
+import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Player;
+import com.codecool.dungeoncrawl.data.actors.Skeleton;
+
+import java.util.List;
 
 public class GameMap {
     private int width;
@@ -8,6 +12,20 @@ public class GameMap {
     private Cell[][] cells;
 
     private Player player;
+
+    private Guard guard;
+
+
+
+    public List<Skeleton> getSkeletons() {
+        return skeletons;
+    }
+
+    public void setSkeletons(List<Skeleton> skeletons) {
+        this.skeletons = skeletons;
+    }
+
+    private List<Skeleton> skeletons;
 
     public GameMap(int width, int height, CellType defaultCellType) {
         this.width = width;
@@ -30,6 +48,12 @@ public class GameMap {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void setGuard(Guard guard) {this.guard = guard;}
+
+    public Guard getGuard(){
+        return guard;
     }
 
     public int getWidth() {
