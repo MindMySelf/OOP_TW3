@@ -8,6 +8,8 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health = 10;
 
+    private int damage = 1;
+
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
@@ -18,8 +20,7 @@ public abstract class Actor implements Drawable {
 
         if(nextCell.getType() == CellType.WALL){
             System.out.println("Nah mate that's a wall");
-        }
-        else {
+        } else {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
@@ -29,6 +30,11 @@ public abstract class Actor implements Drawable {
     public int getHealth() {
         return health;
     }
+    public int getDamage() { return damage; }
+
+    public void setHealth(int hp) { health = hp; }
+
+    public void setDamage(int dmg) { damage = dmg; }
 
     public Cell getCell() {
         return cell;
