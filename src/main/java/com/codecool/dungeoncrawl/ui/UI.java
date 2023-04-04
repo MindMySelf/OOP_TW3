@@ -62,9 +62,9 @@ public class UI {
             for (int y = 0; y < logic.getMapHeight(); y++) {
 
                 Cell cell = logic.getCell(x, y);
-                if (cell.getActor() != null) {
+                if (cell.getActor() != null && cell.getActor().getHealth() >= 0) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
-                } else {
+                } else{
                     Tiles.drawTile(context, cell, x, y);
                 }
             }
