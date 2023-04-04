@@ -8,7 +8,6 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 
 import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
@@ -40,7 +39,7 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             Skeleton skeleton = new Skeleton(cell);
                             System.out.println("New skeleton at (" + skeleton.getX() + ", " + skeleton.getY() + ")");
-                            map.setSkeletons(List.of(skeleton));
+                            map.addSkeleton(skeleton);
                         case '@':
                             cell.setType(CellType.FLOOR);
                             map.setPlayer(new Player(cell));

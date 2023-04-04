@@ -22,8 +22,8 @@ public class GameMap {
         return skeletons;
     }
 
-    public void setSkeletons(List<Skeleton> skeletons) {
-        this.skeletons.addAll(skeletons);
+    public void addSkeleton(Skeleton skeleton) {
+        this.skeletons.add(skeleton);
     }
 
 
