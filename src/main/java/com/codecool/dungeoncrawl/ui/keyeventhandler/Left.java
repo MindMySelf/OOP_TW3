@@ -11,6 +11,6 @@ public class Left implements KeyHandler {
     @Override
     public void perform(KeyEvent event, GameMap map) {
         if(arrow_left.equals(event.getCode()) || a.equals(event.getCode()))
-            map.getPlayer().move(-1, 0);
+            map.getPlayer().getAction().move(-1, 0);
     }
 }

@@ -76,9 +76,9 @@ public class UI {
 
         for(Skeleton skeleton: skelylist){
             int randomX = random.nextInt(3) - 1;
-            skeleton.move(randomX, 0);
+            skeleton.getAction().move(randomX, 0);
         }
-        logic.getMap().getGuard().move(random.nextInt(3) - 1, 0);
+        logic.getMap().getGuard().getAction().move(random.nextInt(3) - 1, 0);
 
 
         mainStage.setHealthLabelText(logic.getPlayerHealth());
