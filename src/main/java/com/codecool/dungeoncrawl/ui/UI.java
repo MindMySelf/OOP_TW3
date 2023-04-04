@@ -82,5 +82,6 @@ public class UI {
 
 
         mainStage.setHealthLabelText(logic.getPlayerHealth());
+        mainStage.setDamageLabelText(logic.getPlayerDamage());
     }
 }

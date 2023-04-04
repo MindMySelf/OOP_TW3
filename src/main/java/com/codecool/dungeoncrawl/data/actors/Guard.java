@@ -2,8 +2,12 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
+import com.codecool.dungeoncrawl.data.Enemy;
 
-public class Guard extends Actor{
+public class Guard extends Actor implements Enemy {
+
+    private int health = 15;
+    private int damage = 7;
     private Cell cell;
     public Guard(Cell cell) {
         super(cell);
@@ -28,6 +32,10 @@ public class Guard extends Actor{
             cell = nextCell;
         }
     }
+    public int getHealth() {
+        return health;
+    }
+    public int getDamage() { return damage; }
 
 
 }
