@@ -12,6 +12,25 @@ public class Skeleton extends Actor {
         this.cell = cell;
         this.cell.setActor(this);
     }
+
+
+    public void move(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+
+        if(nextCell.getType() == CellType.WALL ){
+            System.out.println("Nah mate that's a wall");
+        }  else if (nextCell.getActor() != null) {
+            System.out.println("Skeleton Belépett");
+            if (nextCell.getActor().getTileName().equals("player")) {
+                System.out.println("Skeleton támadt " + nextCell.getActor().getTileName());
+            }
+        }
+        else {
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
+    }
     @Override
     public String getTileName() {
         return "skeleton";
