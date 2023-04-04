@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.ui.elements;
 
+import com.codecool.dungeoncrawl.logic.Inventory;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
@@ -32,4 +33,7 @@ public class MainStage {
     public void setDamageLabelText(String text) {
         this.statusPane.setDamageValue(text);
     }
+   public void updateInventory(Inventory inventory) {
+        this.statusPane.updateInventory(inventory);
+   }
 }
