@@ -12,6 +12,6 @@ public class Up implements KeyHandler {
     @Override
     public void perform(KeyEvent event, GameMap map) {
         if(arrow_up.equals(event.getCode()) || w.equals(event.getCode()))
-            map.getPlayer().getAction().move(0, -1);
+            map.getPlayer().move(0, -1);
     }
 }
