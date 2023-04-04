@@ -2,9 +2,8 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
-import com.codecool.dungeoncrawl.data.Enemy;
 
-public class Guard extends Actor implements Enemy {
+public class Guard extends Actor {
 
     private int health = 15;
     private int damage = 7;
@@ -20,18 +19,6 @@ public class Guard extends Actor implements Enemy {
         return "guard";
     }
 
-    public void move(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-
-        if(nextCell.getType() == CellType.WALL){
-            System.out.println("Nah mate that's a wall");
-        }
-        else {
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
-        }
-    }
     public int getHealth() {
         return health;
     }
