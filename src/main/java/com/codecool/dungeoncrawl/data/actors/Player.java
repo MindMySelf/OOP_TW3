@@ -1,42 +1,42 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.CellType;
-import com.codecool.dungeoncrawl.logic.Action;
+import com.codecool.dungeoncrawl.logic.Inventory;
+import com.codecool.dungeoncrawl.logic.Item;
 
 import java.util.List;
 
 public class Player extends Actor {
     private Cell cell;
-    private Action action;
+    private Inventory inventory;
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
     public Player(Cell cell) {
         super(cell);
         this.cell = cell;
         this.cell.setActor(this);
-        action =  new Action(List.of("guard", "skeleton"), cell, this);
         this.setHealth(700);
         this.setDamage(1);
+        inventory =  new Inventory();
     }
-    public void move(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
 
-        if (!checkWall(nextCell)) {
-            if (checkForActor(nextCell)) {
-                if (nextCell.getActor().getTileName().equals("skeleton") || nextCell.getActor().getTileName().equals("guard")) {
-                    attack(nextCell, this);
-                    if(checkPlayerDeath(this.getHealth())){
-                        cell.setActor(null);
-                    };
-                }
+    @Override
+    protected void handleActor(Cell nextCell) {
+        Actor actor = nextCell.getActor();
+        String tileName = actor.getTileName();
 
-            } else {
+        if (tileName.equals("skeleton") || tileName.equals("guard")) {
+            attack(nextCell, this);
+            if (checkPlayerDeath(this.getHealth())) {
                 cell.setActor(null);
-                nextCell.setActor(this);
-                cell = nextCell;
             }
         }
+        inventory.addItem(new Item("Sword", 3));
+        System.out.println(inventory.getItems());
     }
-
 
     public String getTileName() {
         return "player";
