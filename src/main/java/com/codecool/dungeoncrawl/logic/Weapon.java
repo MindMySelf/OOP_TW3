@@ -8,12 +8,9 @@ public class Weapon implements Drawable {
     private int quantity;
     private int damage;
     private boolean equipped;
-    private Cell cell;
 
 
-    public Weapon(String name, int quantity, int damage, Cell cell) {
-        this.cell = cell;
-        this.cell.setWeapon(this);
+    public Weapon(String name, int quantity, int damage) {
         this.name = name;
         this.quantity = quantity;
         this.equipped = false;
@@ -46,13 +43,6 @@ public class Weapon implements Drawable {
         return damage;
     }
 
-    public int getX() {
-        return cell.getX();
-    }
-
-    public int getY() {
-        return cell.getY();
-    }
     @Override
     public String getTileName() {
         return "sword";
