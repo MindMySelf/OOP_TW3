@@ -17,6 +17,7 @@ public class GameMap {
 
     private Guard guard;
     private List<Skeleton> skeletons = new ArrayList<>();
+    private List<Guard> guards = new ArrayList<>();
     private List<Weapon> weapons = new ArrayList<>();
 
     public List<Weapon> getWeapons() {
@@ -71,5 +72,13 @@ public class GameMap {
 
     public int getHeight() {
         return height;
+    }
+
+    public void addGuard(Guard guard) {
+        this.guards.add(guard);
+    }
+
+    public List<Guard> getGuards() {
+        return guards;
     }
 }

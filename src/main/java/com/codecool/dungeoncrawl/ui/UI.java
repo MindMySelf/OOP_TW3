@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.ui;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.ui.elements.MainStage;
@@ -78,8 +79,9 @@ public class UI {
             int randomX = random.nextInt(3) - 1;
             skeleton.move(randomX, 0);
         }
-        logic.getMap().getGuard().move(random.nextInt(3) - 1, 0);
-
+        for (Guard guard : guardList) {
+            guard.move(random.nextInt(3) - 1, 0);
+        }
 
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setDamageLabelText(logic.getPlayerDamage());

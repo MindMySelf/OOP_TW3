@@ -82,7 +82,7 @@ public class StatusPane {
                         weapon.setEquipped(true);
                         equipLabel.setText("Equipped");
                         equipLabel.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #ffffff; -fx-padding: 5px;");
-                        updateInventoryVisually(inventory);
+                        updateInventory(inventory);
                     } else {
                         weapon.setEquipped(false);
                         equipLabel.setText("Click to Equip");

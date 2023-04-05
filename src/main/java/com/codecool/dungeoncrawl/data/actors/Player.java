@@ -2,7 +2,7 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.logic.Inventory;
-import com.codecool.dungeoncrawl.logic.Item;
+import com.codecool.dungeoncrawl.logic.Weapon;
 
 import java.util.List;
 
