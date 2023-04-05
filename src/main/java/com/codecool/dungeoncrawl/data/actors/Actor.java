@@ -46,7 +46,7 @@ public abstract class Actor implements Drawable {
     }
 
     protected boolean checkWall(Cell nextCell){
-        return nextCell.getType() == CellType.WALL;
+        return nextCell.getType() == CellType.WALL || nextCell.getType() == CellType.WATER;
     }
 
 

@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.logic.Inventory;
 import com.codecool.dungeoncrawl.logic.Weapon;
 
@@ -58,5 +59,8 @@ public class Player extends Actor {
         return "player";
     }
 
+    public boolean checkDoorCanBeOpened() {
+        return inventory.getItem("key") == null;
+    }
 
 }

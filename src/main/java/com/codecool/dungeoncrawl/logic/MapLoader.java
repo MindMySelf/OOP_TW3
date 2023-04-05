@@ -47,6 +47,15 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             map.addGuard(new Guard(cell));
                             break;
+                        case 'd':
+                            cell.setType(CellType.DOOR);
+                            break;
+                        case 'r':
+                            cell.setType(CellType.WATER);
+                            break;
+                        case 'b':
+                            cell.setType(CellType.BRIDGE);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

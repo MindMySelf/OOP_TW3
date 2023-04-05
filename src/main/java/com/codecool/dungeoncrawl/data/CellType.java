@@ -5,8 +5,10 @@ import org.w3c.dom.ls.LSOutput;
 public enum CellType {
     EMPTY("empty"),
     FLOOR("floor"),
-    WALL("wall");
-
+    WALL("wall"),
+    DOOR("door"),
+    WATER("water"),
+    BRIDGE("bridge");
     private final String tileName;
 
     CellType(String tileName) {
