@@ -20,28 +20,43 @@ public class Player extends Actor {
         this.cell.setActor(this);
         this.setHealth(700);
         this.setDamage(1);
-        inventory =  new Inventory();
+        this.inventory = new Inventory();
     }
 
     @Override
-    protected void handleActor(Cell nextCell) {
+    protected void handleAttack(Cell nextCell) {
         Actor actor = nextCell.getActor();
         String tileName = actor.getTileName();
-
         if (tileName.equals("skeleton") || tileName.equals("guard")) {
             attack(nextCell, this);
-            if (checkPlayerDeath(this.getHealth())) {
-                cell.setActor(null);
-            }
         }
-        inventory.addItem(new Item("Sword", 3));
-        System.out.println(inventory.getItems());
+
     }
+
+    @Override
+    public void updateAttack() {
+        if (inventory.getEquippedItem() != null) {
+            if (inventory.getEquippedItem().getName().equals("Sword")) {
+                this.setDamage(1);
+                this.setDamage(getDamage() + inventory.getEquippedItem().getDamage());
+                System.out.println(this.getDamage());
+            }
+
+            if (inventory.getEquippedItem().getName().equals("Dagger")) {
+                this.setDamage(1);
+                this.setDamage(getDamage() + inventory.getEquippedItem().getDamage());
+                System.out.println(this.getDamage());
+            }
+        } else {
+            this.setDamage(1);
+        }
+
+    }
+
 
     public String getTileName() {
         return "player";
     }
-
 
 
 }

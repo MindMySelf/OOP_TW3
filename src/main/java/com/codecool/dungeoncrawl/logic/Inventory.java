@@ -4,38 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-    private Map<String, Item> items;
+    private Map<String, Weapon> items;
 
     public Inventory() {
-        items = new HashMap<String, Item>();
+        items = new HashMap<String, Weapon>();
     }
-    public void addItem(Item item) {
-        String itemName = item.getName();
+    public void addItem(Weapon weapon) {
+        String itemName = weapon.getName();
         if (items.containsKey(itemName)) {
-            Item existingItem = items.get(itemName);
-            existingItem.setQuantity(existingItem.getQuantity() + item.getQuantity());
+            Weapon existingWeapon = items.get(itemName);
+            existingWeapon.setQuantity(existingWeapon.getQuantity() + weapon.getQuantity());
         } else {
-            items.put(itemName, item);
+            items.put(itemName, weapon);
         }
     }
 
-    public void removeItem(Item item) {
-        String itemName = item.getName();
+    public void removeItem(Weapon weapon) {
+        String itemName = weapon.getName();
         if (items.containsKey(itemName)) {
-            Item existingItem = items.get(itemName);
-            int quantity = existingItem.getQuantity() - item.getQuantity();
+            Weapon existingWeapon = items.get(itemName);
+            int quantity = existingWeapon.getQuantity() - weapon.getQuantity();
             if (quantity <= 0) {
                 items.remove(itemName);
             } else {
-                existingItem.setQuantity(quantity);
+                existingWeapon.setQuantity(quantity);
             }
         }
     }
-    public boolean hasItem(Item item) {
-        String itemName = item.getName();
+    public boolean hasItem(Weapon weapon) {
+        String itemName = weapon.getName();
         if (items.containsKey(itemName)) {
-            Item existingItem = items.get(itemName);
-            return existingItem.getQuantity() >= item.getQuantity();
+            Weapon existingWeapon = items.get(itemName);
+            return existingWeapon.getQuantity() >= weapon.getQuantity();
         }
         return false;
     }
@@ -44,7 +44,7 @@ public class Inventory {
 
     public Map<String, Integer> getItemQuantities() {
         Map<String, Integer> itemQuantities = new HashMap<>();
-        for (Map.Entry<String, Item> entry : items.entrySet()) {
+        for (Map.Entry<String, Weapon> entry : items.entrySet()) {
             itemQuantities.put(entry.getKey(), entry.getValue().getQuantity());
         }
         return itemQuantities;
@@ -52,11 +52,26 @@ public class Inventory {
 
     public Map<String, Integer> getItems() {
         Map<String, Integer> itemQuantities = new HashMap<>();
-        for (Map.Entry<String, Item> entry : items.entrySet()) {
+        for (Map.Entry<String, Weapon> entry : items.entrySet()) {
             itemQuantities.put(entry.getKey(), entry.getValue().getQuantity());
         }
         return itemQuantities;
     }
+    public Weapon getEquippedItem() {
+        for (Map.Entry<String, Weapon> entry : items.entrySet()) {
+            Weapon weapon = entry.getValue();
+            if (weapon.isEquipped()) {
+                return weapon;
+            }
+        }
+        return null;
+    }
 
-
+    public Weapon getItem(String itemName){
+        for (Map.Entry<String, Weapon> entry : items.entrySet()){
+            Weapon weapon = entry.getValue();
+            if(itemName.equals(weapon.getName())) return weapon;
+        }
+        return null;
+    }
 }

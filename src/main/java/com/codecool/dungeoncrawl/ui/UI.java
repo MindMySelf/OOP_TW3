@@ -28,6 +28,7 @@ public class UI {
     private Random random = new Random();
 
     private List<Skeleton> skelylist;
+    private List<Guard> guardList;
 
 
     public UI(GameLogic logic, Set<KeyHandler> keyHandlers) {
@@ -56,6 +57,8 @@ public class UI {
     }
 
     public void refresh() {
+        skelylist = logic.getMap().getSkeletons();
+        guardList = logic.getMap().getGuards();
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         for (int x = 0; x < logic.getMapWidth(); x++) {
@@ -64,17 +67,14 @@ public class UI {
                 Cell cell = logic.getCell(x, y);
                 if (cell.getActor() != null && cell.getActor().getHealth() >= 0) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
-                } else{
+                } else {
                     Tiles.drawTile(context, cell, x, y);
                 }
             }
         }
 
 
-        skelylist = logic.getMap().getSkeletons();
-
-
-        for(Skeleton skeleton: skelylist){
+        for (Skeleton skeleton : skelylist) {
             int randomX = random.nextInt(3) - 1;
             skeleton.move(randomX, 0);
         }

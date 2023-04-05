@@ -1,7 +1,7 @@
 package com.codecool.dungeoncrawl.ui.elements;
 
 import com.codecool.dungeoncrawl.logic.Inventory;
-import com.codecool.dungeoncrawl.logic.Item;
+import com.codecool.dungeoncrawl.logic.Weapon;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -61,8 +61,37 @@ public class StatusPane {
         for (Map.Entry<String, Integer> entry : itemQuantities.entrySet()) {
             String itemName = entry.getKey();
             int quantity = entry.getValue();
+            Weapon weapon = inventory.getItem(itemName);
             Label itemLabel = new Label(itemName + ": " + quantity);
-            inventoryBox.getChildren().add(itemLabel);
+            Label equipLabel = new Label("Click to Equip");
+            equipLabel.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff; -fx-padding: 5px;");
+            if(weapon != null && weapon.isEquipped()){
+                equipLabel.setText("Equipped");
+                equipLabel.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #ffffff; -fx-padding: 5px;");
+
+            }
+
+            equipLabel.setOnMouseClicked(e -> {
+                if (weapon != null) {
+                    if (!weapon.isEquipped()) {
+                        for (String equippedItem: inventory.getItems().keySet()) {
+                            if (inventory.getItem(equippedItem).isEquipped()) {
+                                inventory.getItem(equippedItem).setEquipped(false);
+                            }
+                        }
+                        weapon.setEquipped(true);
+                        equipLabel.setText("Equipped");
+                        equipLabel.setStyle("-fx-background-color: #00ff00; -fx-text-fill: #ffffff; -fx-padding: 5px;");
+                        updateInventoryVisually(inventory);
+                    } else {
+                        weapon.setEquipped(false);
+                        equipLabel.setText("Click to Equip");
+                        equipLabel.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff; -fx-padding: 5px;");
+                    }
+                }
+            });
+            inventoryBox.getChildren().addAll(itemLabel, equipLabel);
         }
     }
+
 }

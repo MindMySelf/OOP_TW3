@@ -38,7 +38,6 @@ public class MapLoader {
                         case 's':
                             cell.setType(CellType.FLOOR);
                             Skeleton skeleton = new Skeleton(cell);
-                            System.out.println("New skeleton at (" + skeleton.getX() + ", " + skeleton.getY() + ")");
                             map.addSkeleton(skeleton);
                         case '@':
                             cell.setType(CellType.FLOOR);
@@ -46,7 +45,7 @@ public class MapLoader {
                             break;
                         case 'g':
                             cell.setType(CellType.FLOOR);
-                            map.setGuard(new Guard(cell));
+                            map.addGuard(new Guard(cell));
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
