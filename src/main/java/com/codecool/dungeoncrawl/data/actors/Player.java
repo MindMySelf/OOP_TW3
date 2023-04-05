@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.logic.Inventory;
 import com.codecool.dungeoncrawl.logic.Weapon;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ public class Player extends Actor {
 
     public Player(Cell cell) {
         super(cell);
-        setHealth(10);
+        setHealth(100);
         setDamage(1);
         inventory = new Inventory();
         random = new Random();
@@ -70,8 +71,16 @@ public class Player extends Actor {
                 System.exit(0);
             }
         } else {
-            if (checkWall(nextCell)) {
+            if (checkObstacle(nextCell)) {
                 return;
+            }
+            if(checkForKey(nextCell)){
+                inventory.addItem(new Weapon("Key", 1, 0));
+                nextCell.setType(CellType.FLOOR);
+            }
+            if(checkForApple(nextCell)){
+                setHealth(getHealth() + 2);
+                nextCell.setType(CellType.FLOOR);
             }
             if (isActorOnNextCell(nextCell)) {
                 handleAttack(nextCell);

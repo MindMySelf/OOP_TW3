@@ -19,6 +19,10 @@ public class Inventory {
         }
     }
 
+    public void pickUpItem(Weapon weapon) {
+        addItem(weapon);
+    }
+
     public void removeItem(Weapon weapon) {
         String itemName = weapon.getName();
         if (items.containsKey(itemName)) {
