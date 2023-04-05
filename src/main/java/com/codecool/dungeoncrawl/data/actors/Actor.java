@@ -55,7 +55,6 @@ public abstract class Actor implements Drawable {
         int actorHp = actor.getHealth() - nextCell.getActor().getDamage();
         actor.setHealth(actorHp);
         nextCell.getActor().setHealth(targetHp);
-        System.out.println(nextCell.getActor().getTileName()+ " | " + nextCell.getActor().getHealth());
     }
 
     protected boolean isActorOnNextCell(Cell cell) {

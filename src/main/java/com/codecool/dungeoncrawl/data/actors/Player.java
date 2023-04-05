@@ -1,9 +1,10 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.logic.Inventory;
 import com.codecool.dungeoncrawl.logic.Weapon;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.util.Random;
 
@@ -17,7 +18,7 @@ public class Player extends Actor {
 
     public Player(Cell cell) {
         super(cell);
-        setHealth(700);
+        setHealth(10);
         setDamage(1);
         inventory = new Inventory();
         random = new Random();
@@ -51,7 +52,6 @@ public class Player extends Actor {
         if (inventory.getEquippedItem() != null) {
             setDamage(1);
             setDamage(getDamage() + inventory.getEquippedItem().getDamage());
-            System.out.println(getDamage());
         } else {
             setDamage(1);
         }
@@ -62,7 +62,13 @@ public class Player extends Actor {
     public void move(int dx, int dy) {
         Cell nextCell = getCell().getNeighbor(dx, dy);
         if (checkPlayerDeath(getHealth())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Game over!", ButtonType.OK);
+            alert.setHeaderText(null);
+            alert.showAndWait();
             getCell().setActor(null);
+            if (alert.getResult() == ButtonType.OK) {
+                System.exit(0);
+            }
         } else {
             if (checkWall(nextCell)) {
                 return;
@@ -82,6 +88,6 @@ public class Player extends Actor {
     }
 
     public boolean checkDoorCanBeOpened() {
-        return inventory.getItem("key") == null;
+        return inventory.getWeapon("key") == null;
     }
 }

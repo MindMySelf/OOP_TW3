@@ -61,7 +61,7 @@ public class StatusPane {
         for (Map.Entry<String, Integer> entry : itemQuantities.entrySet()) {
             String itemName = entry.getKey();
             int quantity = entry.getValue();
-            Weapon weapon = inventory.getItem(itemName);
+            Weapon weapon = inventory.getWeapon(itemName);
             Label itemLabel = new Label(itemName + ": " + quantity);
             Label equipLabel = new Label("Click to Equip");
             equipLabel.setStyle("-fx-background-color: #ff0000; -fx-text-fill: #ffffff; -fx-padding: 5px;");
@@ -75,8 +75,8 @@ public class StatusPane {
                 if (weapon != null) {
                     if (!weapon.isEquipped()) {
                         for (String equippedItem: inventory.getItems().keySet()) {
-                            if (inventory.getItem(equippedItem).isEquipped()) {
-                                inventory.getItem(equippedItem).setEquipped(false);
+                            if (inventory.getWeapon(equippedItem).isEquipped()) {
+                                inventory.getWeapon(equippedItem).setEquipped(false);
                             }
                         }
                         weapon.setEquipped(true);

@@ -8,15 +8,22 @@ import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
+    private static int index = 0;
     public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map.txt");
+
+        List<String> maps = new ArrayList<>();
+        maps.add("/map.txt");
+        maps.add("/map2.txt");
+        InputStream is = MapLoader.class.getResourceAsStream(maps.get(index));
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
-
+        index++;
         scanner.nextLine(); // empty line
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);

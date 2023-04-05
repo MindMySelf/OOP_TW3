@@ -67,11 +67,12 @@ public class Inventory {
         return null;
     }
 
-    public Weapon getItem(String itemName){
+    public Weapon getWeapon(String itemName){
         for (Map.Entry<String, Weapon> entry : items.entrySet()){
             Weapon weapon = entry.getValue();
             if(itemName.equals(weapon.getName())) return weapon;
         }
         return null;
     }
+
 }
