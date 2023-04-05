@@ -7,7 +7,6 @@ import com.codecool.dungeoncrawl.logic.Weapon;
 import java.util.List;
 
 public class Player extends Actor {
-    private Cell cell;
     private Inventory inventory;
 
     public Inventory getInventory() {
@@ -16,11 +15,9 @@ public class Player extends Actor {
 
     public Player(Cell cell) {
         super(cell);
-        this.cell = cell;
-        this.cell.setActor(this);
-        this.setHealth(700);
-        this.setDamage(1);
-        this.inventory = new Inventory();
+        setHealth(700);
+        setDamage(1);
+        inventory = new Inventory();
     }
 
     @Override
@@ -30,33 +27,48 @@ public class Player extends Actor {
         if (tileName.equals("skeleton") || tileName.equals("guard")) {
             attack(nextCell, this);
         }
-
     }
 
     @Override
     public void updateAttack() {
         if (inventory.getEquippedItem() != null) {
             if (inventory.getEquippedItem().getName().equals("Sword")) {
-                this.setDamage(1);
-                this.setDamage(getDamage() + inventory.getEquippedItem().getDamage());
-                System.out.println(this.getDamage());
+                setDamage(1);
+                setDamage(getDamage() + inventory.getEquippedItem().getDamage());
+                System.out.println(getDamage());
             }
 
             if (inventory.getEquippedItem().getName().equals("Dagger")) {
-                this.setDamage(1);
-                this.setDamage(getDamage() + inventory.getEquippedItem().getDamage());
-                System.out.println(this.getDamage());
+                setDamage(1);
+                setDamage(getDamage() + inventory.getEquippedItem().getDamage());
+                System.out.println(getDamage());
             }
         } else {
-            this.setDamage(1);
+            setDamage(1);
         }
 
     }
 
+    @Override
+    public void move(int dx, int dy) {
+        Cell nextCell = getCell().getNeighbor(dx, dy);
+        if (checkPlayerDeath(getHealth())) {
+            getCell().setActor(null);
+        } else {
+            if (checkWall(nextCell)) {
+                return;
+            }
+            if (isActorOnNextCell(nextCell)) {
+                handleAttack(nextCell);
+            } else {
+                moveActor(nextCell);
+                updateAttack();
+            }
+        }
+    }
 
+    @Override
     public String getTileName() {
         return "player";
     }
-
-
 }
