@@ -7,6 +7,7 @@ import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,12 @@ import java.util.Scanner;
 
 public class MapLoader {
     public static GameMap loadMap() {
-
+        int mapIndex = Player.mapIndex;
         List<String> maps = new ArrayList<>();
         maps.add("/map.txt");
         maps.add("/map2.txt");
-        InputStream is = MapLoader.class.getResourceAsStream(maps.get(0));
+        String fileName = maps.get(mapIndex);
+        InputStream is = MapLoader.class.getResourceAsStream(fileName);
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();

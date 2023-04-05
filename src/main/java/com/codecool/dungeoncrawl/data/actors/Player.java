@@ -2,7 +2,9 @@ package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
+import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.logic.Inventory;
+import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.Weapon;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -13,11 +15,7 @@ public class Player extends Actor {
     private Inventory inventory;
     private Random random;
 
-    public int getMapIndex() {
-        return mapIndex;
-    }
-
-    protected int mapIndex;
+   public static int mapIndex = 0;
 
     public Inventory getInventory() {
         return inventory;
@@ -29,7 +27,7 @@ public class Player extends Actor {
         setDamage(1);
         inventory = new Inventory();
         random = new Random();
-        mapIndex = 0;
+
     }
 
     @Override
@@ -87,7 +85,10 @@ public class Player extends Actor {
                 }
             }else{
                 if(nextCell.getType().equals(CellType.DOOR)) {
+                    System.out.println("megtortent");
                     mapIndex++;
+                    MapLoader.loadMap();
+
                 }
             }
             if(checkForKey(nextCell)){
@@ -103,7 +104,6 @@ public class Player extends Actor {
             } else {
                 moveActor(nextCell);
                 updateAttack();
-                System.out.println(checkDoorCanBeOpened());;
             }
         }
     }
@@ -119,5 +119,13 @@ public class Player extends Actor {
         }else{
             return false;
         }
+    }
+
+    public int getMapIndex() {
+        return mapIndex;
+    }
+
+    public void setMapIndex(int mapIndex) {
+        this.mapIndex = mapIndex;
     }
 }
