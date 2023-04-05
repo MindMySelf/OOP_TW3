@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
+import com.codecool.dungeoncrawl.logic.Inventory;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
@@ -10,7 +11,9 @@ public abstract class Actor implements Drawable {
 
     private int damage;
 
-    public Actor(Cell cell) {
+
+
+    public Actor(Cell cell){
         this.cell = cell;
         this.cell.setActor(this);
     }
@@ -46,9 +49,6 @@ public abstract class Actor implements Drawable {
         return nextCell.getType() == CellType.WALL;
     }
 
-    protected boolean checkForActor(Cell nextCell){
-        return nextCell.getActor() != null;
-    }
 
     protected void attack(Cell nextCell, Actor actor) {
         int targetHp = nextCell.getActor().getHealth() - actor.getDamage();
@@ -58,7 +58,7 @@ public abstract class Actor implements Drawable {
         System.out.println(nextCell.getActor().getTileName()+ " | " + nextCell.getActor().getHealth());
     }
 
-    protected boolean isActorNear(Cell cell) {
+    protected boolean isActorOnNextCell(Cell cell) {
         return cell.getActor() != null;
     }
 
@@ -68,28 +68,31 @@ public abstract class Actor implements Drawable {
         nextCell.setActor(this);
         cell = nextCell;
     }
-    protected void handleActor(Cell nextCell) {
+    protected void handleAttack(Cell nextCell) {
         Actor actor = nextCell.getActor();
         String tileName = actor.getTileName();
 
         if (tileName.equals("player")) {
             attack(nextCell, this);
-            if (checkPlayerDeath(this.getHealth())) {
-                cell.setActor(null);
-            }
         }
     }
 
     public void move(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-
-        if (checkWall(nextCell)) {
-            return;
-        }
-        if (isActorNear(nextCell)) {
-            handleActor(nextCell);
+        if (checkPlayerDeath(this.getHealth())) {
+            cell.setActor(null);
         } else {
-            moveActor(nextCell);
+            if (checkWall(nextCell)) {
+                return;
+            }
+            if (isActorOnNextCell(nextCell)) {
+                handleAttack(nextCell);
+            } else {
+                moveActor(nextCell);
+                this.updateAttack();
+            }
         }
+    }
+    public void updateAttack() {
     }
 }
