@@ -3,7 +3,6 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
-import com.codecool.dungeoncrawl.logic.Inventory;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
@@ -45,11 +44,17 @@ public abstract class Actor implements Drawable {
         return actorHp <= 0;
     }
 
-    protected boolean checkWall(Cell nextCell){
-        return nextCell.getType() == CellType.WALL || nextCell.getType() == CellType.WATER;
+    protected boolean checkObstacle(Cell nextCell){
+        return nextCell.getType() == CellType.WALL || nextCell.getType() == CellType.WATER || nextCell.getType() == CellType.CAMPFIRE;
     }
 
+    protected boolean checkForKey(Cell nextCell){
+        return nextCell.getType() == CellType.KEY;
+    }
 
+    protected boolean checkForApple(Cell nextCell) {
+        return nextCell.getType() == CellType.APPLE;
+    }
     protected void attack(Cell nextCell, Actor actor) {
         int targetHp = nextCell.getActor().getHealth() - actor.getDamage();
         int actorHp = actor.getHealth() - nextCell.getActor().getDamage();
@@ -81,7 +86,7 @@ public abstract class Actor implements Drawable {
         if (checkPlayerDeath(this.getHealth())) {
             cell.setActor(null);
         } else {
-            if (checkWall(nextCell)) {
+            if (checkObstacle(nextCell)) {
                 return;
             }
             if (isActorOnNextCell(nextCell)) {
