@@ -13,6 +13,12 @@ public class Player extends Actor {
     private Inventory inventory;
     private Random random;
 
+    public int getMapIndex() {
+        return mapIndex;
+    }
+
+    protected int mapIndex;
+
     public Inventory getInventory() {
         return inventory;
     }
@@ -23,6 +29,7 @@ public class Player extends Actor {
         setDamage(1);
         inventory = new Inventory();
         random = new Random();
+        mapIndex = 0;
     }
 
     @Override
@@ -74,6 +81,15 @@ public class Player extends Actor {
             if (checkObstacle(nextCell)) {
                 return;
             }
+            if(!checkDoorCanBeOpened()){
+                if(nextCell.getType().equals(CellType.DOOR)){
+                    return;
+                }
+            }else{
+                if(nextCell.getType().equals(CellType.DOOR)) {
+                    mapIndex++;
+                }
+            }
             if(checkForKey(nextCell)){
                 inventory.addItem(new Weapon("Key", 1, 0));
                 nextCell.setType(CellType.FLOOR);
@@ -87,6 +103,7 @@ public class Player extends Actor {
             } else {
                 moveActor(nextCell);
                 updateAttack();
+                System.out.println(checkDoorCanBeOpened());;
             }
         }
     }
@@ -97,6 +114,10 @@ public class Player extends Actor {
     }
 
     public boolean checkDoorCanBeOpened() {
-        return inventory.getWeapon("key") == null;
+        if(inventory.getEquippedItem() != null) {
+            return inventory.getItems().containsKey("Key") && inventory.getEquippedItem().getName().equals("Key");
+        }else{
+            return false;
+        }
     }
 }

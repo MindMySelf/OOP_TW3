@@ -13,17 +13,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MapLoader {
-    private static int index = 0;
     public static GameMap loadMap() {
 
         List<String> maps = new ArrayList<>();
         maps.add("/map.txt");
         maps.add("/map2.txt");
-        InputStream is = MapLoader.class.getResourceAsStream(maps.get(index));
+        InputStream is = MapLoader.class.getResourceAsStream(maps.get(0));
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
-        index++;
         scanner.nextLine(); // empty line
 
         GameMap map = new GameMap(width, height, CellType.EMPTY);
