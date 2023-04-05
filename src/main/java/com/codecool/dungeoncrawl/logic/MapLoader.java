@@ -57,11 +57,32 @@ public class MapLoader {
                         case 'd':
                             cell.setType(CellType.DOOR);
                             break;
-                        case 'r':
+                        case 'w':
                             cell.setType(CellType.WATER);
                             break;
                         case 'b':
                             cell.setType(CellType.BRIDGE);
+                            break;
+                        case 'W':
+                            cell.setType(CellType.WOODS);
+                            break;
+                        case 't':
+                            cell.setType(CellType.TREE);
+                            break;
+                        case 'c':
+                            cell.setType(CellType.CAMPFIRE);
+                            break;
+                        case 'r':
+                            cell.setType(CellType.ROAD);
+                            break;
+                        case 'k':
+                            cell.setType(CellType.KEY);
+                            break;
+                        case 'G':
+                            cell.setType(CellType.GRASS);
+                            break;
+                        case 'a':
+                            cell.setType(CellType.APPLE);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");

@@ -8,7 +8,14 @@ public enum CellType {
     WALL("wall"),
     DOOR("door"),
     WATER("water"),
-    BRIDGE("bridge");
+    BRIDGE("bridge"),
+    WOODS("treeType2"),
+    TREE("treeType1"),
+    ROAD("road"),
+    CAMPFIRE("campfire"),
+    KEY("key"),
+    GRASS("grass"),
+    APPLE("apple");
     private final String tileName;
 
     CellType(String tileName) {

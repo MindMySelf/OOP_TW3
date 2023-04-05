@@ -33,6 +33,12 @@ public class Tiles {
         tileMap.put("bridge", new Tile(6,5));
         tileMap.put("water", new Tile(8,4));
         tileMap.put("apple", new Tile(15,29));
+        tileMap.put("road", new Tile(3,0));
+        tileMap.put("treeType1", new Tile(2,1));
+        tileMap.put("treeType2", new Tile(3,1));
+        tileMap.put("campfire", new Tile(14,10));
+        tileMap.put("key", new Tile(16,23));
+        tileMap.put("grass", new Tile(7,0));
 
     }
 
