@@ -3,6 +3,7 @@ package com.codecool.dungeoncrawl.data;
 import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Player;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
+import com.codecool.dungeoncrawl.logic.Weapon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,14 @@ public class GameMap {
 
     private Guard guard;
     private List<Skeleton> skeletons = new ArrayList<>();
+    private List<Weapon> weapons = new ArrayList<>();
 
+    public List<Weapon> getWeapons() {
+        return weapons;
+    }
+    public void addWeapon(Weapon weapon) {
+        this.weapons.add(weapon);
+    }
 
     public List<Skeleton> getSkeletons() {
         return skeletons;
@@ -55,6 +63,7 @@ public class GameMap {
     public Guard getGuard(){
         return guard;
     }
+
 
     public int getWidth() {
         return width;
