@@ -1,8 +1,6 @@
 package com.codecool.dungeoncrawl.ui;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.data.CellType;
-import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Guard;
 import com.codecool.dungeoncrawl.data.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.GameLogic;
@@ -86,5 +84,6 @@ public class UI {
         mainStage.setHealthLabelText(logic.getPlayerHealth());
         mainStage.setDamageLabelText(logic.getPlayerDamage());
         mainStage.updateInventory(logic.getMap().getPlayer().getInventory());
+        logic.loadNextMap();
     }
 }

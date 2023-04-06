@@ -3,13 +3,20 @@ package com.codecool.dungeoncrawl.data.actors;
 import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
+import com.codecool.dungeoncrawl.logic.GameLogic;
 import com.codecool.dungeoncrawl.logic.Inventory;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.Weapon;
+import com.codecool.dungeoncrawl.ui.UI;
+import com.codecool.dungeoncrawl.ui.keyeventhandler.Down;
+import com.codecool.dungeoncrawl.ui.keyeventhandler.Left;
+import com.codecool.dungeoncrawl.ui.keyeventhandler.Right;
+import com.codecool.dungeoncrawl.ui.keyeventhandler.Up;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 import java.util.Random;
+import java.util.Set;
 
 public class Player extends Actor {
     private Inventory inventory;
@@ -85,9 +92,8 @@ public class Player extends Actor {
                 }
             }else{
                 if(nextCell.getType().equals(CellType.DOOR)) {
-                    System.out.println("megtortent");
+                    new UI( new GameLogic(), Set.of(new Up(), new Down(), new Left(), new Right()));
                     mapIndex++;
-                    MapLoader.loadMap();
 
                 }
             }
