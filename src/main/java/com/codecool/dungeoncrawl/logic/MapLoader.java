@@ -82,6 +82,12 @@ public class MapLoader {
                         case 'a':
                             cell.setType(CellType.APPLE);
                             break;
+                        case 'o':
+                            cell.setType(CellType.GOLD);
+                            break;
+                        case 'm':
+                            cell.setType(CellType.GEM);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

@@ -141,7 +141,7 @@ public class Player extends Actor {
         }
     }
     public boolean doorIsNotOpenable(Cell nextCell) {
-        return !checkDoorCanBeOpened() && nextCell.getType().equals(CellType.DOOR;
+        return !checkDoorCanBeOpened() && nextCell.getType().equals(CellType.DOOR);
     }
 
     @Override

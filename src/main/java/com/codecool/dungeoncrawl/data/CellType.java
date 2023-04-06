@@ -15,7 +15,9 @@ public enum CellType {
     CAMPFIRE("campfire"),
     KEY("key"),
     GRASS("grass"),
-    APPLE("apple");
+    APPLE("apple"),
+    GOLD("gold"),
+    GEM("gem");
     private final String tileName;
 
     CellType(String tileName) {
