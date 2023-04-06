@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.data.Cell;
+import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.GameMap;
 import com.codecool.dungeoncrawl.data.actors.Player;
 
@@ -36,8 +37,7 @@ public class GameLogic {
     }
 
 public void loadNextMap() {
-    System.out.println("helo");
-        if(map.getPlayer().getX() == 21 && map.getPlayer().getY() == 19){
+        if(map.getPlayer().getCell().getType().equals(CellType.DOOR)){
             this.map = MapLoader.loadMap(map.getPlayer().getMapIndex());
         }
         else{
