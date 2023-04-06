@@ -1,11 +1,9 @@
 package com.codecool.dungeoncrawl.data.actors;
 
 import com.codecool.dungeoncrawl.data.Cell;
-import com.codecool.dungeoncrawl.logic.Inventory;
 
 public class Guard extends Actor {
     private Cell cell;
-
 
 
     public Guard(Cell cell) {
@@ -15,8 +13,6 @@ public class Guard extends Actor {
         this.setHealth(15);
         this.setDamage(7);
     }
-
-
 
 
     @Override

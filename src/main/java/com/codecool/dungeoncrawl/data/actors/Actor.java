@@ -10,7 +10,7 @@ import java.util.Set;
 
 public abstract class Actor implements Drawable {
     private Cell cell;
-    Set<CellType> obstacles = new HashSet<>(Arrays.asList(CellType.WALL, CellType.WATER, CellType.CAMPFIRE));
+    Set<CellType> obstacles = new HashSet<>(Arrays.asList(CellType.WALL, CellType.WATER, CellType.CAMPFIRE, CellType.EMPTY));
     private int health;
 
     private int damage;
