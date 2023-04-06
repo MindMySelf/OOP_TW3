@@ -32,8 +32,8 @@ public class UI {
 
     public UI(GameLogic logic, Set<KeyHandler> keyHandlers) {
         this.canvas = new Canvas(
-                logic.getMapWidth() * Tiles.TILE_WIDTH,
-                logic.getMapHeight() * Tiles.TILE_WIDTH);
+                logic.getMapWidth() * Tiles.DRAW_WITH,
+                logic.getMapHeight() * Tiles.DRAW_WITH);
         this.logic = logic;
         this.context = canvas.getGraphicsContext2D();
         this.mainStage = new MainStage(canvas);
