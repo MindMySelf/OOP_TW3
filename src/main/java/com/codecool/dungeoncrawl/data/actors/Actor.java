@@ -4,8 +4,13 @@ import com.codecool.dungeoncrawl.data.Cell;
 import com.codecool.dungeoncrawl.data.CellType;
 import com.codecool.dungeoncrawl.data.Drawable;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class Actor implements Drawable {
     private Cell cell;
+    Set<CellType> obstacles = new HashSet<>(Arrays.asList(CellType.WALL, CellType.WATER, CellType.CAMPFIRE));
     private int health;
 
     private int damage;
@@ -45,7 +50,7 @@ public abstract class Actor implements Drawable {
     }
 
     protected boolean checkObstacle(Cell nextCell){
-        return nextCell.getType() == CellType.WALL || nextCell.getType() == CellType.WATER || nextCell.getType() == CellType.CAMPFIRE;
+        return obstacles.contains(nextCell.getType());
     }
 
     protected boolean checkForKey(Cell nextCell){

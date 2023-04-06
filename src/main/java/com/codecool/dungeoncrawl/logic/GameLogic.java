@@ -37,12 +37,9 @@ public class GameLogic {
     }
 
 public void loadNextMap() {
-        if(map.getPlayer().getCell().getType().equals(CellType.DOOR)){
-            this.map = MapLoader.loadMap(map.getPlayer().getMapIndex());
-        }
-        else{
-            System.out.println(map.getPlayer().getMapIndex() + " | " + map.getPlayer().getX() + " | " + map.getPlayer().getY() + " | " + map.getCell(21, 18));
-        }
+    if (map.getPlayer().getCell().getType().equals(CellType.DOOR)) {
+        this.map = MapLoader.loadMap(map.getPlayer().getMapIndex());
+    }
 }
     public GameMap getMap() {
         return map;

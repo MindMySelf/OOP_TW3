@@ -12,11 +12,11 @@ import com.codecool.dungeoncrawl.ui.keyeventhandler.Down;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.Left;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.Right;
 import com.codecool.dungeoncrawl.ui.keyeventhandler.Up;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Player extends Actor {
     private Inventory inventory;
@@ -86,15 +86,30 @@ public class Player extends Actor {
             if (checkObstacle(nextCell)) {
                 return;
             }
-            if(!checkDoorCanBeOpened()){
-                if(nextCell.getType().equals(CellType.DOOR)){
+            if(!checkDoorCanBeOpened() && nextCell.getType().equals(CellType.DOOR)){
                     return;
+            } else if (nextCell.getType().equals(CellType.DOOR) && mapIndex == 2) {
+                System.out.println("Belefut");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "CONGRATULATIONS YOU HAVE WON!");
+                alert.setHeaderText(null);
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        Platform.runLater(() -> {
+                            alert.setResult(ButtonType.OK);
+                            alert.hide();
+                        });
+                    }
+                }, 3500);
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    System.exit(0);
                 }
-            }else{
+                timer.cancel();
+            } else{
                 if(nextCell.getType().equals(CellType.DOOR)) {
-                    new UI( new GameLogic(), Set.of(new Up(), new Down(), new Left(), new Right()));
                     mapIndex++;
-
                 }
             }
             if(checkForKey(nextCell)){
