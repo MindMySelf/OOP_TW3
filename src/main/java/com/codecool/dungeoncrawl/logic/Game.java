@@ -23,7 +23,7 @@ public class Game extends Application {
         this.ui = new UI(logic, keyHandlers);
         ui.setUpPain(primaryStage);
 
-        primaryStage.setTitle("Dungeon Crawls");
+        primaryStage.setTitle("Béla ÉS A DÉMONOK");
         primaryStage.show();
     }
 }
