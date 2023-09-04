@@ -1,119 +1,185 @@
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<a name="readme-top"></a>
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-# Dungeon Crawl
 
-## Story
 
-[Roguelikes](https://en.wikipedia.org/wiki/Roguelike) are one of the oldest
-types of video games. The earliest ones were made in the 70s, and they were inspired
-a lot by tabletop RPGs. Roguelikes usually have the following features in common.
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 
-- They are tile-based.
-- The game is divided into turns, that is, you take one action, then the other
-  entities (monsters, allies, and so on, controlled by the CPU) take one.
-- The task is usually to explore a labyrinth and retrieve some treasure from its
-  bottom.
-- They feature permadeath: if you die, it's game over, you need to start from the
-  beginning again.
-- They rely heavily on procedural generation: Levels, monster placement, items, and so on
-  are randomized, so the game does not get boring.
 
-Your task is to create a roguelike. You can deviate from the rules above,
-the important bit is that it should be fun.
 
-## What are you going to learn?
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<h1 align="center">Dungeon Crawl</h1>
 
-- Get more practice in OOP.
-- Understand design patterns: layer separation. (All of the game logic, such as player
-  movement, game rules, and so on), is in the `logic` package, completely
-  independent of user interface code. In principle, you could implement a
-  completely different interface, such as terminal, web, Virtual Reality, and so on, for
-  the same logic code.)
+  <p align="center">
+    Our team created a simple pixel game and extended it with funny features.
+    <br />
+    <a href="https://github.com/MindMySelf/OOP_TW3"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    ·
+    <a href="https://github.com/MindMySelf/OOP_TW3/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/MindMySelf/OOP_TW3/issues">Request Feature</a>
+  </p>
+</div>
 
-## Tasks
 
-1. Analyze the project\
-   Understand the existing code, classes, and tests so you can make changes. Do this before planning anything else. It helps you understand what is going on.
-   - A plan is created with task lists.
 
-2. Restrict movement\
-   Create a game logic which restricts the movement of the player so they cannot run into walls and monsters.
-    - The hero is not able to move into walls.
-    - The hero is not able to move into monsters.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-3. Dungeon items\
-There are items lying around the dungeon. They are visible in the GUI. 
-   - There are at least two item types, such as a key and a sword.
-   - There can be one item in a map square.
-   - A player can stand on the same square as an item.
-   - The item must be displayed on screen (unless somebody stands on the same square).
 
-4. Pick up items\
-Create a feature that allows the hero to pick up an item.
-   - There is a way to pick up items.
-   - After the player picks up the item, the item the hero is standing on is gone from map.
 
-5. Show picked up items\
-   Show picked up items in the inventory list.
-   - There is an `Inventory` list on the screen.
-   - After the hero picks up an item, it appears in the inventory.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-6. Attack monsters\
-   Make the hero able to attack monsters by moving into them.
-   - Attacking a monster removes 5 health points. If the health of a monster goes below 0, it dies and disappears.
-   - If the hero attacks a monster and it does not die, it also attacks the hero at the same time (it only removes 2 health points).
-   - Having a weapon increases attack strength.
-   - Different monsters have different health and attack strengths.
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-7. Doors and keys\
-   Create doors in the dungeon that are opened using keys.
-   - There are two new square types, closed door and open door.
-   - The hero cannot pass through a closed door unless there is a key in the inventory. After moving through, the closed door becomes an open door.
+This project had the goal to write and extend a simple pixel game with features like enemies or items.
 
-8. Different monsters\
-   Create three different monster types with different behaviors.
-    - There are at least three different monster types with different behaviors.
-    - One type of monster does not move at all.
-    - One type of monster moves randomly. It cannot go trough walls or open doors.
+<p align="right"><a href="#readme-top">:top:</a></p>
 
-9. **OPTIONAL TASK:** Better movement AI\
-   Create a more sophisticated movement AI.
-    - One type of monster moves around randomly and teleports to a random free square every few turns.
-    - A custom movement logic is implemented (such as Ghosts that can move trough walls, or a monster that chases the player).
 
-10. More map features\
-    Create maps that have more varied scenery. Take a look at the tile sheet (tiles.png). Get inspired!
-    - At least three more tiles are used. These can be more monsters, items, or background. At least one of them must be not purely decorative, but have some effect on gameplay.
 
-11. **OPTIONAL TASK:** Character name\
-    Allow the player to set a name for the character. This name can also function as a cheat code.
-    - There is a `Name` label and text field on the screen.
-    - If the name given is one of the game developers' name, the player can walk through walls.
+### Built With
 
-12. Implement more levels\
-    Add the possibility to add more levels.
-    - There are at least two levels.
-    - There is a square type "stairs down". Entering this square moves the player to a different map.
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 
-13. Levels are bigger than the window.\
-    Implement bigger levels than the game window.
-    - Levels are larger than the game window (for example three screens wide and three screens tall).
-    - When the player moves, the player character stays in the center of the view.
+<p align="right"><a href="#readme-top">:top:</a></p>
 
-## Hints
-- Start with the smaller tasks, and then move into the more difficult ones.
-- Make sure you understand the whole starting code before making any changes.
 
-- Open the project in IntelliJ IDEA. This is a Maven project, so you need to
-  open `pom.xml`. The project uses JavaFX, so use the `javafx` Maven plugin to
-  build and run the program. Build using `mvn javafx:compile`, and run using `mvn javafx:run`.
-- Do not delve into JavaFX technicalities too much, most of the GUI is ready.
 
-## Background materials
-- :book-open: [RogueBasin, a wiki with lots of resources on Roguelike creation](http://roguebasin.com/index.php?title=Articles)
-- :exclamation-circle: [Basics of OOP](pages/oop/basics-of-object-oriented-programming.md)
+<!-- GETTING STARTED -->
+## Getting Started
 
-- :exclamation-circle: [How to design classes](pages/java/how-to-design-classes.md)
-- :book-open: [JavaFX](https://en.wikipedia.org/wiki/JavaFX)
-- :book-open: [JavaFX Tutorial](http://tutorials.jenkov.com/javafx/index.html)
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
-- [1-Bit Pack by Kenney](https://kenney.nl/assets/bit-pack)
+### Prerequisites
+
+Please look at the core requirements for the project:
+
+1) JAVA 17
+2) MAVEN
+3) IDE - for example INTELLIJ IDEA
+
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone git@github.com:MindMySelf/OOP_TW3.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the App file
+
+<p align="right"><a href="#readme-top">:top:</a></p>
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+This is a pixel game with two levels, the goal is to to reach and open the doors at the end of every level. In the first level you can figth enemys why the second level is the treasure room. In the game you can pick up multiply items and battle with monsters. Be careful, the enemies can hit you to! Additionally only one item can be equipted at the time.
+
+<p align="right"><a href="#readme-top">:top:</a></p>
+
+
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+This project was made by three Codecool students: Dudás Dominik, Péterfi László, Cselőtei Gergely
+
+<p align="right"><a href="#readme-top">:top:</a></p>
+
+
+
+<!-- CONTACT -->
+## Contact
+
+:man_technologist: Gergely Cselőtei - :email: cseloteigergely[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-Gergely]<br>
+:man_technologist: Péterfi László - :email: peterfi[dot]laci[dot]0325[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-László]<br>
+:man_technologist: Dudás Domonkos - :email:  [![LinkedIn][linkedin-shield]][linkedin-Dominik]<br>
+
+Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+
+<p align="right"><a href="#readme-top">:top:</a></p>
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/MindMySelf/OOP_TW3/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/MindMySelf/OOP_TW3/forks
+[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-url]: https://github.com/MindMySelf/OOP_TW3/stargazers
+[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/MindMySelf/OOP_TW3/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-Gergely]: https://www.linkedin.com/in/gergely-csel%C5%91tei-4469a127a/
+[linkedin-László]: https://www.linkedin.com/in/l%C3%A1szl%C3%B3-p%C3%A9terfi/
+[linkedin-Dominik]: https://www.linkedin.com/in/dominik-dudas/
+[product-screenshot]: src/main/resources/map.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
+[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
+[Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
