@@ -140,7 +140,7 @@ This project was made by three Codecool students: Dudás Dominik, Péterfi Lász
 
 :man_technologist: Gergely Cselőtei - :email: cseloteigergely[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-Gergely]<br>
 :man_technologist: Péterfi László - :email: peterfi[dot]laci[dot]0325[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-László]<br>
-:man_technologist: Dudás Domonkos - :email:  [![LinkedIn][linkedin-shield]][linkedin-Dominik]<br>
+:man_technologist: Dudás Domonkos - :email: dudasdominik3[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-Dominik]<br>
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
