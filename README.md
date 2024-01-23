@@ -75,7 +75,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-This project had the goal to write and extend a simple pixel game with features like enemies or items.
+This project had the goal to write and extend a simple pixel game with features like enemies or items. <br> The game has two levels, the goal is to reach and open the doors at the end of every level. In the first level you can figth enemies, the second level is the treasure room. <br> In the game you can pick up multiply items and battle with monsters, but be careful, the enemies can hit you too! Additionally only one item can be equipted at the time.
 
 <p align="right"><a href="#readme-top">:top:</a></p>
 
@@ -120,7 +120,11 @@ Please look at the core requirements for the project:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This is a pixel game with two levels, the goal is to to reach and open the doors at the end of every level. In the first level you can figth enemys why the second level is the treasure room. In the game you can pick up multiply items and battle with monsters. Be careful, the enemies can hit you to! Additionally only one item can be equipted at the time.
+The user can move with the character using awsd keys or arrow keys. <br>
+The user can damage monster characters by trying to move onto them. <br>
+The user can pick up items by moving onto them. <br>
+The user can select items in the inventory. <br>
+The user can go through doors to access other leveles.
 
 <p align="right"><a href="#readme-top">:top:</a></p>
 
@@ -138,9 +142,9 @@ This project was made by three Codecool students: Dudás Dominik, Péterfi Lász
 <!-- CONTACT -->
 ## Contact
 
-:man_technologist: Gergely Cselőtei - :email: cseloteigergely[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-Gergely]<br>
-:man_technologist: Péterfi László - :email: peterfi[dot]laci[dot]0325[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-László]<br>
-:man_technologist: Dudás Domonkos - :email: dudasdominik3[at]gmail[dot]com [![LinkedIn][linkedin-shield]][linkedin-Dominik]<br>
+:man_technologist: Gergely Cselőtei - [![LinkedIn][linkedin-shield]][linkedin-Gergely]<br>
+:man_technologist: Péterfi László -  [![LinkedIn][linkedin-shield]][linkedin-László]<br>
+:man_technologist: Dudás Domonkos -  [![LinkedIn][linkedin-shield]][linkedin-Dominik]<br>
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
@@ -151,13 +155,13 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/MindMySelf/OOP_TW3?style=for-the-badge
 [contributors-url]: https://github.com/MindMySelf/OOP_TW3/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/MindMySelf/OOP_TW3?style=for-the-badge
 [forks-url]: https://github.com/MindMySelf/OOP_TW3/forks
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/MindMySelf/OOP_TW3?style=for-the-badge
 [stars-url]: https://github.com/MindMySelf/OOP_TW3/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/MindMySelf/OOP_TW3?style=for-the-badge
 [issues-url]: https://github.com/MindMySelf/OOP_TW3/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-Gergely]: https://www.linkedin.com/in/gergely-csel%C5%91tei-4469a127a/
